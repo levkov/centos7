@@ -1,9 +1,9 @@
 FROM centos:7
 MAINTAINER levkov
 
-RUN rm -f /etc/localtime && ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-RUN yum update -y && yum install -y epel-release
-RUN yum install -y python-pip openssh-server openssh-clients && \
+RUN rm -f /etc/localtime && ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
+    yum update -y && yum install -y epel-release && \
+    yum install -y python-pip openssh-server openssh-clients && \
     pip install supervisor requests==2.5.3
 
 RUN groupadd -r siteop && useradd -r -g siteop siteop && \
